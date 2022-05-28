@@ -2,9 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import PostForm
-
 from .models import Group, Post, User
-
 from .utils import paginator_func
 
 
@@ -52,18 +50,17 @@ def post_create(request):
         post.author = request.user
         form.save()
         return redirect('posts:profile', post.author.username)
-    form = PostForm()
     return render(request, 'posts/create_post.html', {'form': form})
 
 
 @login_required
 def post_edit(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    form = PostForm(request.POST or None, instance=post)
     if post.author != request.user:
         return redirect('posts:post_detail', post.pk)
+    form = PostForm(request.POST or None, instance=post)
     if form.is_valid():
-        post.save()
+        form.save()
         return redirect('posts:post_detail', post.pk)
     context = {
         'form': form

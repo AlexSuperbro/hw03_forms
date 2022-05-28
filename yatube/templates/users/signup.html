@@ -9,7 +9,7 @@
             {% include 'posts/includes/add_form_errors.html' %}
             <form method="post" action="{% url 'users:signup' %}">
             {% csrf_token %}
-            {% include 'posts/includes/add_field_signup.html' %}
+            {% include 'posts/includes/add_form.html' %}
               <div class="col-md-6 offset-md-4">
                 <button type="submit" class="btn btn-primary">
                   Зарегистрироваться
@@ -21,4 +21,4 @@
       </div>
     </div>
   </div>
-{% endblock %} 
+{% endblock %}

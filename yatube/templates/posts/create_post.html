@@ -19,7 +19,7 @@
                 <form method="post" action="{% url 'posts:post_create' %}">
               {% endif %}
                   {% csrf_token %}
-                  {% include 'posts/includes/add_field_create.html' %}
+                  {% include 'posts/includes/add_form.html' %}
                   <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">
                       {% if form.instance.pk %}Сохранить{% else %}Новый пост{% endif %}

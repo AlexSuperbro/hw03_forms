@@ -1,9 +1,15 @@
 <article> 
   <ul>
-    <li>
-      Автор: {{ post.author.get_full_name }}
-      <a href="{% url 'posts:profile' post.author.username %}">все посты пользователя</a>
-    </li>
+    {% if post.author.get_full_name and request.resolver_match.view_name != 'posts:profile' %}
+      <li>
+        {% if post.author.get_full_name %}
+          Автор: {{ post.author.get_full_name }}
+        {% endif %}
+        {% if request.resolver_match.view_name != 'posts:profile' %}
+          <a href="{% url 'posts:profile' post.author.username %}">все посты пользователя</a>
+        {% endif %}
+      </li>
+    {% endif %}
     <li>
       Дата публикации: {{ post.pub_date|date:"d E Y" }}
     </li>
@@ -13,3 +19,13 @@
   </p>
   <a href="{% url 'posts:post_detail' post.pk %}">подробная информация</a>
 </article>
+<div>
+  {% if post.group %}
+    {% if request.resolver_match.view_name != 'posts:group_list' %}
+      все записи группы
+      <a href="{% url 'posts:group_list' post.group.slug %}">#{{post.group}}</a>
+    {% endif %}
+  {% else %}
+    <span style="color: red">Этой публикации нет ни в одном сообществе.</span>
+  {% endif %}
+</div>

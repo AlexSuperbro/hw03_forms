@@ -5,5 +5,4 @@ from django.core.paginator import Paginator
 def paginator_func(input_objects, request):
     paginator = Paginator(input_objects, settings.CONST_TEN)
     page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return page_obj
+    return paginator.get_page(page_number)
