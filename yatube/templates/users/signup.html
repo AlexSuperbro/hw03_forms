@@ -6,10 +6,10 @@
       <div class="card">
         <div class="card-header">Зарегистрироваться</div>
           <div class="card-body">
-            {% include 'posts/includes/add_form_errors.html' %}
+            {% include 'includes/add_form_errors.html' %}
             <form method="post" action="{% url 'users:signup' %}">
             {% csrf_token %}
-            {% include 'posts/includes/add_form.html' %}
+            {% include 'includes/add_form.html' %}
               <div class="col-md-6 offset-md-4">
                 <button type="submit" class="btn btn-primary">
                   Зарегистрироваться

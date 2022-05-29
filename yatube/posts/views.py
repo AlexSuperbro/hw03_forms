@@ -48,7 +48,7 @@ def post_create(request):
     if form.is_valid():
         post = form.save(commit=False)
         post.author = request.user
-        form.save()
+        post.save()
         return redirect('posts:profile', post.author.username)
     return render(request, 'posts/create_post.html', {'form': form})
 

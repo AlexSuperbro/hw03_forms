@@ -9,14 +9,14 @@
           Войти на сайт
         </div>
         <div class="card-body">
-          {% include 'posts/includes/add_form_errors.html' %}
+          {% include 'includes/add_form_errors.html' %}
           <form method="post"
             {% if action_url %}
               action="{% url action_url %}"
             {% endif %}
           >
           {% csrf_token %}
-          {% include 'posts/includes/add_form.html' %}
+          {% include 'includes/add_form.html' %}
           <div class="col-md-6 offset-md-4">
             <button type="submit" class="btn btn-primary">
               Войти
