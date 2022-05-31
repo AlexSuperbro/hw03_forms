@@ -4,9 +4,7 @@
       {% if author %}
         Автор: {{ post.author.get_full_name }}
       {% else %}
-        {% if request.resolver_match.view_name != 'posts:profile' %}
-          <a href="{% url 'posts:profile' post.author.username %}">все посты пользователя</a>
-        {% endif %}
+        <a href="{% url 'posts:profile' post.author.username %}">все посты пользователя</a>
       {% endif %}
     </li>
     <li>
@@ -17,7 +15,6 @@
     {{ post.text|linebreaks }}
   </p>
   <a href="{% url 'posts:post_detail' post.pk %}">подробная информация</a>
-</article>
 <div>
   {% if not group %}
     {% if post.group %}
@@ -27,3 +24,4 @@
     {% endif %}
   {% endif %}
 </div>
+</article>
